@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="icon" type="image/png" href="{{ site.baseurl }}/mango.png">
+        <link rel="icon" type="image/png" href="mango.png">
         <title>Mango Clicker</title>
 
         <!-- Load external CSS styles -->
@@ -17,13 +17,15 @@
   </div>
   <h1 id="display"></h1>
   <h3 id="displayMultiplier">Multiplier: 1</h3><button id="mango" onclick="clickHandler();" class="mango1"></button> <button id="shopMultiplier" onclick="buyMultipliers()" class="mb1">Buy Multiplier | Cost: 15</button> <button id="shopAllMultiplier" onclick="buyAllMultipliers()" class="mb2">Buy All Multiplier</button> <button id="shopAutoclicker" onclick="buyAutoclicker()" class="ac">Buy Autoclicker | Cost: 1000</button>
+  </button> <button id="resetButton" onclick="resetGame();" class="mb1">Reset Game</button>
   <div id="autoBuyDiv">
     <input type="checkbox" id="autoBuyCheckbox"> <label for="autoBuyCheckbox" id="autoBuyLabel">Auto Buy</label>
   </div>
   <div id="devTools">
     <h3 id="devDisplay">DevTools</h3><button id="superClicker" onclick="superAutoclicker();" class="devButton">Toggle Super Autoclicker</button> <button id="x2Clicks" onclick="clicks *= 2; updateGame();" class="devButton">x2 Clicks</button> <button id="x10Clicks" onclick="clicks *= 10; updateGame();" class="devButton">x10 Clicks</button> <button id="x2Multiplier" onclick="multiplier *= 2; updateGame();" class="devButton">x2 Multiplier</button> <button id="x10Multplier" onclick="multiplier *= 10; updateGame();" class="devButton">x10 Multiplier</button>
   </div>
-    <p id="version">Mango Clicker, Version 1.5</p><p id="userId"></p>
+  <hr>
+    <p id="version">Mango Clicker, Version 1.5 <strong>Please note that autoclicker does not save right now, and I am working on this issue.</strong></p><p id="userId"></p>
         <script src="scripts.js"></script>
         
     </body>

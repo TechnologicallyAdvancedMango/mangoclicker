@@ -179,26 +179,4 @@
     width: 500px;
     height: 400px;
     cursor: pointer;
-    animation: bounce 0.5s;
    }
-      #mango:active {
-    background-image: url("mango.png");
-    background-size: cover;
-    background-repeat: no-repeat; /* This will prevent the image from repeating */
-    border: none;
-    width: 500px;
-    height: 400px;
-    cursor: pointer;
-   }
-    @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-}
-

@@ -1,11 +1,11 @@
 //Starting values
-var devID = 'user-4dmf68upajr';
+var devID = 'user-owncomputer';
  var superAutoclickerState = false;
       var isAuthorized = false;
-      var autoClickerSpeed = 800;
+      var autoClickerSpeed = 100;
       var autoClickerHasBeenBought = false;
       var autoBuyHasBeenBought = false;
-      var multiplierCost = 30;
+      var multiplierCost = 15;
     var multiplier = 1;
    var clicks = 0;
         //Achievements here
@@ -30,7 +30,40 @@ if (!localStorage.getItem('userID')) {
 var userID = localStorage.getItem('userID');
 console.log(userID); // This will output the user's ID
 
-        
+function loadClicks() {
+    // Retrieve the clicks from localStorage
+    let savedClicks = localStorage.getItem('clicks');
+    if (savedClicks) {
+        clicks = Number(savedClicks);
+    } else {
+        localStorage.setItem('clicks', clicks);
+    }
+}
+
+function loadMultiplier() {
+    // Retrieve the multiplier from localStorage
+    let savedMultiplier = localStorage.getItem('multiplier');
+    if (savedMultiplier) {
+        multiplier = Number(savedMultiplier);
+    }
+}
+
+function loadAutoclickerBought() {
+    // Retrieve the multiplier from localStorage
+    let savedAutoclickerBought = localStorage.getItem('isLoggedIn') === 'true';
+    if (savedAutoclickerBought) {
+        autoClickerHasBeenBought = savedAutoclickerBought
+    }
+}
+
+function loadMultiplierCost() {
+    // Retrieve the multiplierCost from localStorage
+    let savedMultiplierCost = localStorage.getItem('multiplierCost');
+    if (savedMultiplierCost) {
+        multiplierCost = Number(savedMultiplierCost);
+    }
+}
+
 
 let prevAutoClickerSpeed;
 function superAutoclicker() {
@@ -54,8 +87,7 @@ function checkAchievements() {
     if (!achievement.unlocked && achievement.condition()) {
       achievement.unlocked = true;
       alert("Achievement unlocked: " + achievement.name);
-        multiplierCost /= 2;
-        autoClickerSpeed /= 2;
+        //used to halve multiplier cost and double autoclicker speed
     }
   }
 }
@@ -73,6 +105,12 @@ function updateGame() {
   checkAchievements();
   updateAchievementsDisplay();
   multiplierCost = Math.floor(multiplierCost);
+  clicks = Math.floor(clicks);
+  localStorage.setItem('clicks', clicks);
+   localStorage.setItem('multiplier', multiplier);
+    localStorage.setItem('multiplierCost', multiplierCost);
+    localStorage.setItem('autoclickerBought', autoClickerHasBeenBought);
+    localStorage.getItem('isLoggedIn') === 'true';
 }
 
   function playSound(soundUrl) {
@@ -83,7 +121,7 @@ function updateGame() {
       function updateAchievementsDisplay() {
   var achievementsDiv = document.getElementById("achievements");
   // Clear the current achievements display
-  achievementsDiv.innerHTML = "<h2>Achievements</h2><h6 id='tip'>(Unlocking achievements halves the multiplier cost<br>and doubles autoclicker speed!)</h6>";
+  achievementsDiv.innerHTML = "<h2>Achievements</h2>";
   
   // Add each achievement to the display
   for (var i = 0; i < achievements.length; i++) {
@@ -110,6 +148,7 @@ function updateGame() {
     multiplier += 1;
     clicks -= multiplierCost;
     multiplierCost = multiplierCost * 1.2
+    multiplierCost = Math.floor(multiplierCost);
     updateGame();
   } else {
       alert("You cannot afford the multiplier.");
@@ -154,6 +193,25 @@ function updateGame() {
             }
         } setInterval(autoBuy, 200); // Always set the interval
     
+    function resetGame() {
+      if(confirm("Are you sure you want to restart your game? (Wipes game file)")) {
+      superAutoclickerState = false;
+      isAuthorized = false;
+      autoClickerSpeed = 100;
+      autoClickerHasBeenBought = false;
+      autoBuyHasBeenBought = false;
+      multiplierCost = 15;
+    multiplier = 1;
+   clicks = 0;
+ localStorage.setItem('clicks', clicks);
+   localStorage.setItem('multiplier', multiplier);
+    localStorage.setItem('multiplierCost', multiplierCost);
+    localStorage.setItem('autoClickerBought', autoClickerHasBeenBought.toString());
+    shopAutoclicker.className = "acp1"
+  location.reload();
+      };
+    };
+
     function bounceButton() {
   var button = document.getElementById("mango");
   button.classList.add("bounceAnimation");
@@ -163,6 +221,10 @@ function updateGame() {
     button.classList.remove("bounceAnimation");
   });
 }
+loadClicks();
+loadMultiplier();
+loadMultiplierCost();
+loadAutoclickerBought();
 autoClicker(); // Start the loop
 autoBuy();// Start the loop
     updateGame();

@@ -211,16 +211,6 @@ function updateGame() {
   location.reload();
       };
     };
-
-    function bounceButton() {
-  var button = document.getElementById("mango");
-  button.classList.add("bounceAnimation");
-
-  // Remove the bounce animation after it finishes
-  button.addEventListener("animationend", function() {
-    button.classList.remove("bounceAnimation");
-  });
-}
 loadClicks();
 loadMultiplier();
 loadMultiplierCost();

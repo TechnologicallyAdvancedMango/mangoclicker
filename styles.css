@@ -172,7 +172,7 @@
     background-color: #F1F1A1;
     }
         #mango {
-    background-image: url("images/mango.png");
+    background-image: url("mango.png");
     background-size: cover;
     background-repeat: no-repeat; /* This will prevent the image from repeating */
     border: none;
@@ -182,7 +182,7 @@
     animation: bounce 0.5s;
    }
       #mango:active {
-    background-image: url("images/mango.png");
+    background-image: url("mango.png");
     background-size: cover;
     background-repeat: no-repeat; /* This will prevent the image from repeating */
     border: none;

@@ -183,6 +183,6 @@
     transition: all 0.3s ease-in-out;
    }
 
-        #mango:hover {
+        #mango:active {
     transform: scale(0.8);
    }

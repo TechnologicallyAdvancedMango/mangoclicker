@@ -180,6 +180,7 @@
     height: 400px;
     cursor: pointer;
     padding: 0px;
+    transition: all 0.3s ease-in-out;
    }
 
         #mango:active {
@@ -190,5 +191,6 @@
     width: 500px;
     height: 400px;
     cursor: pointer;
-    padding: 5px;
+    padding: 0px;
+    transform: scale(0.8);
    }

@@ -106,6 +106,13 @@ function updateGame() {
   updateAchievementsDisplay();
   multiplierCost = Math.floor(multiplierCost);
   clicks = Math.floor(clicks);
+ if(autoClickerHasBeenBought === true) {
+  shopAutoclicker.textContent = "Autoclicker Purchased";
+            shopAutoclicker.className = "acp1";
+ } else {
+  shopAutoclicker.className = "ac";
+  shopAutoclicker.textontent = "Buy Autoclicker | Cost: 1000";
+ }
   localStorage.setItem('clicks', clicks);
    localStorage.setItem('multiplier', multiplier);
     localStorage.setItem('multiplierCost', multiplierCost);
@@ -167,14 +174,10 @@ function updateGame() {
 //Autoclicker purchase and upgrade
       function buyAutoclicker() {
         if(!autoClickerHasBeenBought && clicks >= 1000) {
-            if(shopAutoclicker.className == "acp1") {
-                shopAutoclicker = "acp2";
-            } else {
          autoClickerHasBeenBought = true;
             clicks = clicks - 1000;
             shopAutoclicker.textContent = "Autoclicker Purchased"
-            shopAutoclicker.className = "acp1"
-            }
+            shopAutoclicker.className = "acp1";
         } updateGame()
     }
 

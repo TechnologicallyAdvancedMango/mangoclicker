@@ -179,4 +179,16 @@
     width: 500px;
     height: 400px;
     cursor: pointer;
+    padding: 0px;
+   }
+
+        #mango:active {
+    background-image: url("images/mango.png");
+    background-size: cover;
+    background-repeat: no-repeat; /* This will prevent the image from repeating */
+    border: none;
+    width: 500px;
+    height: 400px;
+    cursor: pointer;
+    padding: 5px;
    }

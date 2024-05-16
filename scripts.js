@@ -195,7 +195,14 @@ function updateGame() {
                 }
             }
         } setInterval(autoBuy, 200); // Always set the interval
-
+ function checkAlerts() {
+  var saved = localStorage.get("checked");
+  if(!saved) {
+   localStorage.set("checked", 1)
+  } else {
+   alertsCheckbox.checked = saved;
+  };
+  
     function resetGame() {
       if(confirm("Are you sure you want to restart your game? (Wipes game file)")) {
       superAutoclickerState = false;
@@ -218,6 +225,7 @@ loadClicks();
 loadMultiplier();
 loadMultiplierCost();
 loadAutoclickerBought();
+checkAlerts();
 autoClicker(); // Start the loop
 autoBuy();// Start the loop
     updateGame();

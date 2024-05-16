@@ -1,13 +1,15 @@
 //Starting values
 var devID = 'user-owncomputer';
- var superAutoclickerState = false;
-      var isAuthorized = false;
-      var autoClickerSpeed = 100;
-      var autoClickerHasBeenBought = false;
-      var autoBuyHasBeenBought = false;
-      var multiplierCost = 15;
-    var multiplier = 1;
-   var clicks = 0;
+var superAutoclickerState = false;
+var isAuthorized = false;
+var autoClickerSpeed = 100;
+var autoClickerHasBeenBought = false;
+var autoBuyHasBeenBought = false;
+var multiplierCost = 15;
+var multiplier = 1;
+var clicks = 0;
+var doAlerts = alertsCheckbox.checked;
+
         //Achievements here
 var achievements = [
   { name: "First Click", unlocked: false, condition: function() { return clicks >= 1; } },
@@ -86,8 +88,10 @@ function checkAchievements() {
     var achievement = achievements[i];
     if (!achievement.unlocked && achievement.condition()) {
       achievement.unlocked = true;
+     if(doAlerts) {
       alert("Achievement unlocked: " + achievement.name);
-        //used to halve multiplier cost and double autoclicker speed
+        //used to halve multiplier cost and double autoclicker speed. Caused too many problems.
+     }
     }
   }
 }
@@ -106,7 +110,6 @@ function updateGame() {
   updateAchievementsDisplay();
   multiplierCost = Math.floor(multiplierCost);
   clicks = Math.floor(clicks);
- checkAlerts();
  if(autoClickerHasBeenBought === true) {
   shopAutoclicker.textContent = "Autoclicker Purchased";
             shopAutoclicker.className = "acp1";
@@ -196,16 +199,6 @@ function updateGame() {
                 }
             }
         } setInterval(autoBuy, 200); // Always set the interval
-
- function checkAlerts() {
-  var saved = localStorage.get("checked");
-  if(!saved) {
-   localStorage.set("checked", true);
-   alertsCheckbox.checked = true;
-  } else {
-   alertsCheckbox.checked = saved;
-  }
- };
   
     function resetGame() {
       if(confirm("Are you sure you want to restart your game? (Wipes game file)")) {
@@ -225,11 +218,11 @@ function updateGame() {
   location.reload();
       };
     };
+
 loadClicks();
 loadMultiplier();
 loadMultiplierCost();
 loadAutoclickerBought();
-checkAlerts();
 autoClicker(); // Start the loop
 autoBuy();// Start the loop
     updateGame();

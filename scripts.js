@@ -1,7 +1,7 @@
 //Get alerts checkbox status
 var alertsCheckboxBYID = document.getElementById("alertsCheckbox");
 //Starting values
-var devID = 'user-owncomputer';
+var devID = "user-aauwlgaf1tp";
 var superAutoclickerState = false;
 var isAuthorized = false;
 var autoClickerSpeed = 100;

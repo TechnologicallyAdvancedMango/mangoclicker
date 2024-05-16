@@ -226,3 +226,6 @@ loadAutoclickerBought();
 autoClicker(); // Start the loop
 autoBuy();// Start the loop
     updateGame();
+setTimeout(function(){
+    updateGame();
+}, 1000);

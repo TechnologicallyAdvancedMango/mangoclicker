@@ -1,3 +1,5 @@
+//Get alerts checkbox status
+var alertsCheckboxBYID = document.getElementById("alertsCheckbox");
 //Starting values
 var devID = 'user-owncomputer';
 var superAutoclickerState = false;
@@ -8,7 +10,7 @@ var autoBuyHasBeenBought = false;
 var multiplierCost = 15;
 var multiplier = 1;
 var clicks = 0;
-var doAlerts = alertsCheckbox.checked;
+var doAlerts = alertsCheckboxBYID.checked;
 var mouseMoved = false;
 
         //Achievements here
@@ -111,6 +113,7 @@ function updateGame() {
   updateAchievementsDisplay();
   multiplierCost = Math.floor(multiplierCost);
   clicks = Math.floor(clicks);
+  doAlerts = alertsCheckboxBYID.checked;
  if(autoClickerHasBeenBought === true) {
   shopAutoclicker.textContent = "Autoclicker Purchased";
             shopAutoclicker.className = "acp1";

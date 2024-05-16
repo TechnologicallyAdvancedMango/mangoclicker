@@ -9,6 +9,7 @@ var multiplierCost = 15;
 var multiplier = 1;
 var clicks = 0;
 var doAlerts = alertsCheckbox.checked;
+var mouseMoved = false;
 
         //Achievements here
 var achievements = [
@@ -218,7 +219,11 @@ function updateGame() {
   location.reload();
       };
     };
-
+ document.body.addEventListener('mousemove', function(e) {
+    if(!mouseMoved) {
+        updateGame();
+    }
+});
 loadClicks();
 loadMultiplier();
 loadMultiplierCost();
@@ -226,6 +231,3 @@ loadAutoclickerBought();
 autoClicker(); // Start the loop
 autoBuy();// Start the loop
     updateGame();
-setTimeout(function(){
-    updateGame();
-}, 1000);

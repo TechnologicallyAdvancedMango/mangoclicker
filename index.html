@@ -63,7 +63,7 @@
     <h1 id="title">Mango Hub</h1>
     <h2 id="description">A collection of all of my games(1)</h2>
     <hr>
-    <input type="text" id="search" onkeyup="myFunction()" placeholder="Search.." title="Search">
+    <input type="text" id="search" onkeyup="searchGames()" placeholder="Search.." title="Search">
     <ul id="gameList">
       <li><div class="gamediv">
         <h3 class="gameh3">Mango Clicker</h3>
@@ -76,6 +76,24 @@
       </div></li>
     </ul>
     <script>
+      function searchGames() {
+          var input, filter, ul, li, a, i;
+            input = document.getElementById("search");
+              filter = input.value.toUpperCase();
+                ul = document.getElementById("gameList");
+                  li = ul.getElementsByTagName("li");
+
+                    for (i = 0; i < li.length; i++) {
+                        a = li[i].getElementsByTagName("a")[0];
+                            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                  li[i].style.display = "";
+                                      } else {
+                                            li[i].style.display = "none";
+                                                }
+                                                  }
+                                                  }
+
+      
       var span = document.getElementById('span');
 
 function time() {

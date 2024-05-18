@@ -64,26 +64,24 @@
     <input type="text" id="search" onkeyup="searchGames()" placeholder="Search.." title="Search">
     <ul id="gameList">
       <li id="gameLi"><
-        <h3 class="gameh3">Mango Clicker</h3>
-        <a href="https://www.themango.click/mangoclicker" class="play">Play Now</a>
+        <a href="https://www.themango.click/mangoclicker" class="play">Mango Clicker</a>
       </li>
       <br>
       <li>
-        <h3 class="gameh3">Clock</h3>
-        <a href="" class="play">Coming Soon</a>
+        <a href="" class="play">Clock</a>
       </li id="gameLi">
     </ul>
     <script>
       function searchGames() {
-          var input, filter, ul, li, h3, i;
+          var input, filter, ul, li, a, i;
             input = document.getElementById("search");
               filter = input.value.toUpperCase();
                 ul = document.getElementById("gameList");
                   li = ul.getElementsByTagName("li");
 
                     for (i = 0; i < li.length; i++) {
-                        h3 = li[i].getElementsByTagName("h3")[0];
-                            if (h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        a = li[i].getElementsByTagName("a")[0];
+                            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                                   li[i].style.display = "";
                                       } else {
                                             li[i].style.display = "none";

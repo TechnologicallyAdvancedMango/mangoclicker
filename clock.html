@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title id="title">Loading time...</title>
+       <title id="title"></title>
        <style>
+            .container {
+                display: flex;
+                align-items: center;
+                width: 150px;
+                height: 150px;
+                border: 1px solid black;
+                border-radius: 10;
+            }
             #clock {
-                position: fixed;
-                left: 50%;
-                top: 50%;
                 font-size: xx-large;
             }
        </style>
     </head>
     <body>
-        <h1 id="clock"></h1>
+        <div class="container">
+            <h1 id="clock"></h1>
+        </div>
         <script>
             function startTime() {
                   const today = new Date();

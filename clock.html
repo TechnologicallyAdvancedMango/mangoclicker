@@ -3,8 +3,13 @@
     <head>
        <title id="title"></title>
        <style>
-        .center {
-            top: 50%;
+            #return {
+                position: absolute;
+                border: solid black;
+                border-radius: 10px;
+                left: 0px;
+                bottom: 0px;
+                margin: 10px;
         }
             #clock {
                 text-align: center;
@@ -15,8 +20,11 @@
     </head>
     <body>
         <div id="container">
-            <h1 id="clock" class="center"></h1>
+            <h1 id="clock"></h1>
         </div>
+        <a href="https://www.themango.click/">
+            <button id="return">Go to Mango Hub</button>
+        </a>
         <script>
             function startTime() {
                   const today = new Date();

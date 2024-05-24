@@ -55,7 +55,7 @@ function loadMultiplier() {
 
 function loadAutoclickerBought() {
     // Retrieve the multiplier from localStorage
-    let savedAutoclickerBought = localStorage.getItem('isLoggedIn') === 'true';
+    let savedAutoclickerBought = localStorage.getItem('autoclickerBought') === 'true';
     if (savedAutoclickerBought) {
         autoClickerHasBeenBought = savedAutoclickerBought
     }
@@ -125,7 +125,6 @@ function updateGame() {
    localStorage.setItem('multiplier', multiplier);
     localStorage.setItem('multiplierCost', multiplierCost);
     localStorage.setItem('autoclickerBought', autoClickerHasBeenBought);
-    localStorage.getItem('isLoggedIn') === 'true';
 }
 
   function playSound(soundUrl) {

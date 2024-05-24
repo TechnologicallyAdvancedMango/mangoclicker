@@ -2,6 +2,7 @@
 var alertsCheckboxBYID = document.getElementById("alertsCheckbox");
 //Starting values
 var devID = "user-aauwlgaf1tp";
+var devID2 = "user-96q0bl8k45d"
 var superAutoclickerState = false;
 var isAuthorized = false;
 var autoClickerSpeed = 100;
@@ -100,7 +101,7 @@ function checkAchievements() {
 }
 
 // Check if the user's ID matches the dev ID
-if (userID === devID) {
+if (userID === devID || devID2) {
     // If it does, give them access to the devtools
    document.getElementById("devTools").style.display = "block";
 }

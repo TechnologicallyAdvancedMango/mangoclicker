@@ -10,6 +10,34 @@
     
     <script>
       //Mango clicker is going to be a platformer game
+      
+      //snackbar function
+      function snackbar(text) {
+    // Create snackbar div
+    let snackbar = document.createElement('div');
+    snackbar.textContent = text;
+    snackbar.style.minWidth = '250px';
+    snackbar.style.backgroundColor = '#333';
+    snackbar.style.color = '#fff';
+    snackbar.style.textAlign = 'center';
+    snackbar.style.borderRadius = '2px';
+    snackbar.style.padding = '16px';
+    snackbar.style.position = 'fixed';
+    snackbar.style.zIndex = '1';
+    snackbar.style.left = '50%';
+    snackbar.style.bottom = '30px';
+    snackbar.style.fontSize = '17px';
+    snackbar.style.transform = 'translateX(-50%)';
+
+    // Add the snackbar div to body
+    document.body.appendChild(snackbar);
+
+    // After 3 seconds, remove the snackbar
+    setTimeout(function(){ 
+        snackbar.parentNode.removeChild(snackbar); 
+    }, 3000);
+      }
+      
       //leave with esc
       document.onkeydown = function(evt) {
             evt = evt || window.event;
@@ -26,6 +54,9 @@
                 }
             }
         };
+
+      //initiation
+      snackbar("Esc to go to Mango Hub")
     </script>
   </body>
 </html>

@@ -1,5 +1,4 @@
 <!doctype html>
-/* Mango Jumper is going to be a platformer game */
 <html>
   <head>
     <title></title>
@@ -10,6 +9,7 @@
   <body>
     
     <script>
+      //Mango clicker is going to be a platformer game
       //leave with esc
       document.onkeydown = function(evt) {
             evt = evt || window.event;
@@ -20,7 +20,7 @@
                 isEscape = (evt.keyCode === 27);
             }
             if (isEscape) {
-                var confirmation = confirm("Do you want to return to Mango Hub");
+                var confirmation = confirm("Are you sure you want to return to Mango Hub?");
                 if (confirmation) {
                     window.location.href = "https://www.themango.click";
                 }

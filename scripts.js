@@ -92,10 +92,7 @@ function checkAchievements() {
     var achievement = achievements[i];
     if (!achievement.unlocked && achievement.condition()) {
       achievement.unlocked = true;
-     if(doAlerts) {
-      alert("Achievement unlocked: " + achievement.name);
-        //used to halve multiplier cost and double autoclicker speed. Caused too many problems.
-     }
+     snackbar("Achievement unlocked: " + achievement.name);
     }
   }
 }
@@ -229,6 +226,34 @@ function updateGame() {
         updateGame();
     }
 });
+
+ //snackbar function
+      function snackbar(text) {
+    // Create snackbar div
+    let snackbar = document.createElement('div');
+    snackbar.textContent = text;
+    snackbar.style.minWidth = '250px';
+    snackbar.style.backgroundColor = '#333';
+    snackbar.style.color = '#fff';
+    snackbar.style.textAlign = 'center';
+    snackbar.style.borderRadius = '2px';
+    snackbar.style.padding = '16px';
+    snackbar.style.position = 'fixed';
+    snackbar.style.zIndex = '1';
+    snackbar.style.left = '50%';
+    snackbar.style.bottom = '30px';
+    snackbar.style.fontSize = '17px';
+    snackbar.style.transform = 'translateX(-50%)';
+
+    // Add the snackbar div to body
+    document.body.appendChild(snackbar);
+
+    // After 3 seconds, remove the snackbar
+    setTimeout(function(){ 
+        snackbar.parentNode.removeChild(snackbar); 
+    }, 3000);
+      }
+
 loadClicks();
 loadMultiplier();
 loadMultiplierCost();

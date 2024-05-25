@@ -1,5 +1,3 @@
-//Get alerts checkbox status
-var alertsCheckboxBYID = document.getElementById("alertsCheckbox");
 //Starting values
 var devID = "user-aauwlgaf1tp";
 var devID2 = "user-96q0bl8k45d"

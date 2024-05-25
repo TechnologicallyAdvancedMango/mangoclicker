@@ -161,9 +161,9 @@ function updateGame() {
     multiplierCost = Math.floor(multiplierCost);
     updateGame();
   } else {
-          if(doAlerts) {
-      alert("You cannot afford the multiplier.");
-          }
+          
+      snackbar("You cannot afford the multiplier.");
+        
   }
 }
 

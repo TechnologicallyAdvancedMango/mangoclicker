@@ -1,0 +1,31 @@
+<!doctype html>
+/* Mango Jumper is going to be a platformer game */
+<html>
+  <head>
+    <title></title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    
+    <script>
+      //leave with esc
+      document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+            } else {
+                isEscape = (evt.keyCode === 27);
+            }
+            if (isEscape) {
+                var confirmation = confirm("Do you want to return to Mango Hub");
+                if (confirmation) {
+                    window.location.href = "https://www.themango.click";
+                }
+            }
+        };
+    </script>
+  </body>
+</html>

@@ -35,12 +35,14 @@
     </head>
     <body onmousedown="jump()">
         <div id="game">
+            <p id="score">Score:</p>
             <div id="player"></div>
         </div>
 
         <script>
             var player = document.getElementById('player');
             var game = document.getElementById('game');
+            var score = 0;
 
             function jump() {
                 if (player.classList != 'animate') {
@@ -77,7 +79,12 @@
                     }
                 }, 10);
             }
-
+            function updateScore () {
+                score = score + 100;
+                var scoreDisplay = document.getElementById("score")
+                scoreDisplay.textContent = "Score: " + score;
+            }
+            setInterval(updateScore, 1000); //Increment the score every second
             setInterval(createObstacle, 4000); // Create a new obstacle every 4 seconds
         </script>
     </body>

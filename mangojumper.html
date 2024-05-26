@@ -8,7 +8,7 @@
                 width: 100%;
                 background-color: #f0f0f0;
             }
-            #player, .obstacle {
+            #player {
                 position: absolute;
                 bottom: 0;
                 background-color: #00ff00;
@@ -18,6 +18,11 @@
             .obstacle {
                 right: -20px;
                 animation: obstacle 2s linear;
+                position: absolute;
+                bottom: 0;
+                background-color: #ff0000;
+                width: 20px;
+                height: 20px;
             }
             .animate {
                 animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1);

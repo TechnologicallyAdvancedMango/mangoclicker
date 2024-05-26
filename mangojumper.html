@@ -34,17 +34,10 @@
             .animate {
                 animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
             }
-            .rotate {
-                animation: rotate 0.5s linear forwards;
-            }
             @keyframes jump {
                 0% { bottom: 0; }
                 50% { bottom: 70px; }
                 100% { bottom: 0; }
-            }
-            @keyframes rotate {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(180deg); }
             }
             @keyframes obstacle {
                 0% { right: -20px; }
@@ -68,15 +61,16 @@
             var score = 0;
             var firstClick = true;
             var scoreInterval;
+            var rotation = 0; // Variable to keep track of the current rotation angle
 
             function jump() {
                 if (!playerContainer.classList.contains('animate')) {
                     playerContainer.classList.add('animate');
-                    player.classList.add('rotate');
+                    rotation += 90; // Increase the rotation angle by 90 degrees
+                    player.style.transform = 'rotate(' + rotation + 'deg)'; // Apply the new rotation angle to the player
                 }
                 setTimeout(function () {
                     playerContainer.classList.remove('animate');
-                    player.classList.remove('rotate');
                 }, 500);
 
                 if (firstClick) {

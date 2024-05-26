@@ -90,15 +90,15 @@
     var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
     var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
-    if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom <= randomHeight) {
-        if (playerTop < obstacleTop) { // If the player is on top of the obstacle
-            player.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
-        } else { // If the player hits the side of the obstacle
-            obstacle.style.animation = 'none';
-            obstacle.style.display = 'none';
-            alert('Game Over. You lost.');
-            location.reload(); // Reload the page to restart the game
-        }
+    if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop && playerTop > obstacleTop) {
+        // Player is on top of the obstacle
+        player.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
+    } else if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop) {
+        // Player hits the side of the obstacle
+        obstacle.style.animation = 'none';
+        obstacle.style.display = 'none';
+        alert('Game Over. You lost.');
+        location.reload(); // Reload the page to restart the game
     } else if (playerBottom > 0 && player.classList != 'animate') { // If the player is not on top of an obstacle and is not jumping
         player.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down
     }
@@ -108,6 +108,9 @@
         game.removeChild(obstacle); // Remove the obstacle from the game
     }
 }, 10);
+
+
+
 
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #game {
+                position: relative;
+                height: 200px;
+                width: 100%;
+                background-color: #f0f0f0;
+            }
+            #player, .obstacle {
+                position: absolute;
+                bottom: 0;
+                background-color: #ff0000;
+                width: 20px;
+                height: 20px;
+            }
+            .obstacle {
+                right: -20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="game">
+            <div id="player"></div>
+        </div>
+
+        <script>
+            var player = document.getElementById('player');
+            var game = document.getElementById('game');
+
+            function jump() {
+                if (player.classList != 'animate') {
+                    player.classList.add('animate');
+                }
+                setTimeout(function () {
+                    player.classList.remove('animate');
+                }, 500);
+            }
+
+            var checkDead = setInterval(function () {
+                var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
+                var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+
+                if (obstacleLeft < 20 && obstacleLeft > 0 && playerTop >= 130) {
+                    obstacle.style.animation = 'none';
+                    obstacle.style.display = 'none';
+                    alert('Game Over. You lost.');
+                }
+            }, 10);
+
+            function createObstacle() {
+                var obstacle = document.createElement('div');
+                obstacle.classList.add('obstacle');
+                game.appendChild(obstacle);
+                obstacle.style.animation = 'obstacle 1s infinite linear';
+            }
+
+            createObstacle();
+        </script>
+    </body>
+</html>

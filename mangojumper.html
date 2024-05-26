@@ -17,17 +17,31 @@
             }
             .obstacle {
                 right: -20px;
+                animation: obstacle 2s infinite linear;
+            }
+            .animate {
+                animation: jump 0.5s;
+            }
+            @keyframes jump {
+                0% { top: 150px; }
+                50% { top: 100px; }
+                100% { top: 150px; }
+            }
+            @keyframes obstacle {
+                0% { right: -20px; }
+                100% { right: 100%; }
             }
         </style>
     </head>
-    <body>
+    <body onclick="jump()">
         <div id="game">
             <div id="player"></div>
+            <div class="obstacle"></div>
         </div>
 
         <script>
             var player = document.getElementById('player');
-            var game = document.getElementById('game');
+            var obstacle = document.getElementsByClassName('obstacle')[0];
 
             function jump() {
                 if (player.classList != 'animate') {
@@ -48,15 +62,6 @@
                     alert('Game Over. You lost.');
                 }
             }, 10);
-
-            function createObstacle() {
-                var obstacle = document.createElement('div');
-                obstacle.classList.add('obstacle');
-                game.appendChild(obstacle);
-                obstacle.style.animation = 'obstacle 1s infinite linear';
-            }
-
-            createObstacle();
         </script>
     </body>
 </html>

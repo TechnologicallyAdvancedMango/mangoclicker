@@ -9,7 +9,6 @@ var autoBuyHasBeenBought = false;
 var multiplierCost = 15;
 var multiplier = 1;
 var clicks = 0;
-var doAlerts = alertsCheckboxBYID.checked;
 var mouseMoved = false;
 
         //Achievements here

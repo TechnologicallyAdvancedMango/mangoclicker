@@ -1,0 +1,188 @@
+.collapsible {
+  display: none;
+  background-color: #000;
+  color: #00FF00;
+  cursor: pointer;
+  padding: 18px;
+  width: 10%;
+  border: solid;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-color: #00FF00;
+  border-width: 5px;
+  border-style: outset;
+}
+      #version {
+    position: sticky;
+    bottom: 0; 
+    left: 0; 
+    margin: 10px;
+}
+      #autoBuyCheckbox {
+    position: relative;
+
+  }
+      #autoBuyDiv {
+    display: none;
+    background: white;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 60px;
+    border: solid;
+    border-style: outset;
+    border-color: white;
+    border-width: 5px;
+  }
+      #devDisplay {
+          color: #00FF00;
+      }
+      #devTools {
+            display: none;
+            background-color: black;
+            padding: 10px;
+            border: solid
+  }   .devButton {
+        background: #00FF00;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        width: 15%;
+        height: 60px;
+        border: solid;
+  }
+      #tip {
+    color: grey;
+  }
+      #display {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    color: black;
+  }       #displayMultiplier {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    color: black;
+  }      #achievements {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid;
+    margin: 10px;
+    padding: 10px;
+    border-style: outset;
+    border-color: beige;
+    background: beige;
+    border-block-width: thick;
+    writing-mode: horizontal-tb;
+    border-left-width: thick;
+    border-right-width: thick;
+  }      .ac {
+    background: white;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 60px;
+    border-style: outset;
+    border-width: 5px;
+    border-color: white;
+  }   
+      .ac:active {
+    background: beige;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 60px;
+    border-style: inset;
+    border-width: 5px;
+    border-color: white;
+  } 
+      .acp1 {
+    background: grey;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 60px;
+    border-style: inset;
+    border-width: 5px;
+    border-color: white;
+  }    
+
+      .mb1:active {
+    background: beige;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 60px;
+    border-style: inset;
+    border-width: 5px;
+    border-color: white;
+  }
+      .mb1 {
+    background: white;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 60px;
+    border-style: outset;
+    border-width: 5px;
+    border-color: white;
+  }      .mb2:active {
+    background: beige;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 8%;
+    height: 60px;
+    border-style: inset;
+    border-width: 5px;
+    border-color: white;
+  }
+        .mb2 {
+    background: white;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 8%;
+    height: 60px;
+    border-style: outset;
+    border-width: 5px;
+    border-color: white;
+  }
+      .mango1 {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+  }
+    body {
+    background-color: #F1F1A1;
+    }
+        #mango {
+    background-image: url("images/mango.png");
+    background-size: cover;
+    background-repeat: no-repeat; /* This will prevent the image from repeating */
+    border: none;
+    width: 500px;
+    height: 400px;
+    cursor: pointer;
+    padding: 0px;
+    transition: all 0.3s ease-in-out;
+   }
+
+        #mango:active {
+    transform: scale(0.8);
+   }

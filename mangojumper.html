@@ -82,23 +82,26 @@
                 obstacle.style.height = randomHeight + 'px';
                 obstacle.style.animationDuration = '2s'; // Fixed speed
 
-                var checkDead = setInterval(function () {
-                    var playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
-                    var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
-                    var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
+               var checkDead = setInterval(function () {
+    var playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
+    var playerRight = parseInt(window.getComputedStyle(player).getPropertyValue('left')) + parseInt(window.getComputedStyle(player).getPropertyValue('width'));
+    var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+    var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
 
-                    if (obstacleLeft < 20 && obstacleRight > 0 && playerBottom <= randomHeight) {
-                        obstacle.style.animation = 'none';
-                        obstacle.style.display = 'none';
-                        alert('Game Over. You lost.');
-                        location.reload(); // Reload the page to restart the game
-                    }
+    if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom <= randomHeight) {
+        obstacle.style.animation = 'none';
+        obstacle.style.display = 'none';
+        alert('Game Over. You lost.');
+        location.reload(); // Reload the page to restart the game
+    }
 
-                    if (obstacleRight < 0) { // If the obstacle has passed the player
-                        clearInterval(checkDead); // Stop checking for collision
-                        game.removeChild(obstacle); // Remove the obstacle from the game
-                    }
-                }, 10);
+    if (obstacleRight < 0) { // If the obstacle has passed the player
+        clearInterval(checkDead); // Stop checking for collision
+        game.removeChild(obstacle); // Remove the obstacle from the game
+    }
+}, 10);
+
+
             }
 
             setInterval(createObstacle, 1000); // Create a new obstacle every second

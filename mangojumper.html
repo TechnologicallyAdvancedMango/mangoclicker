@@ -67,7 +67,7 @@
 
                 if (firstClick) {
                     scoreInterval = setInterval(function() {
-                        score++; // Increment the score
+                        score = score + 100; // Increment the score by 100
                         scoreElement.textContent = 'Score: ' + score; // Update the score display
                     }, 1000); // Increment the score every 1 second
                     firstClick = false;
@@ -101,7 +101,7 @@
                 }, 10);
             }
 
-            setInterval(createObstacle, 4000); // Create a new obstacle every 4 seconds
+            setInterval(createObstacle, 1000); // Create a new obstacle every second
         </script>
     </body>
 </html>

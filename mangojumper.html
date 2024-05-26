@@ -27,8 +27,10 @@
                 height: 20px;
             }
             .animate {
-                animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1), rotate 0.5s linear;
-            }
+    animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1) forwards, rotate 0.5s linear forwards;
+}
+
+
             @keyframes jump {
                 0% { bottom: 0; }
                 50% { bottom: 70px; }

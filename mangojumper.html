@@ -17,7 +17,7 @@
             }
             .obstacle {
                 right: -20px;
-                animation: obstacle 2s infinite linear;
+                animation: obstacle 2s linear;
             }
             .animate {
                 animation: jump 0.5s ease;
@@ -51,19 +51,6 @@
                 }, 500);
             }
 
-            var checkDead = setInterval(function () {
-                var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
-                var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
-                var obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
-
-                if (obstacleLeft < 20 && obstacleLeft > 0 && playerTop >= (150 - obstacleHeight)) {
-                    obstacle.style.animation = 'none';
-                    obstacle.style.display = 'none';
-                    alert('Game Over. You lost.');
-                    location.reload(); // Reload the page to restart the game
-                }
-            }, 10);
-
             function createObstacle() {
                 var obstacle = document.createElement('div');
                 obstacle.classList.add('obstacle');
@@ -71,9 +58,27 @@
                 var randomHeight = Math.random() * 60 + 10; // Random height between 10 and 70
                 obstacle.style.height = randomHeight + 'px';
                 obstacle.style.animationDuration = Math.random() * 1 + 1 + 's'; // Random speed between 1 and 2 seconds
+
+                var checkDead = setInterval(function () {
+                    var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
+                    var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+                    var obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
+
+                    if (obstacleLeft < 20 && obstacleLeft > 0 && playerTop >= (150 - obstacleHeight)) {
+                        obstacle.style.animation = 'none';
+                        obstacle.style.display = 'none';
+                        alert('Game Over. You lost.');
+                        location.reload(); // Reload the page to restart the game
+                    }
+
+                    if (obstacleLeft < -20) { // If the obstacle has passed the player
+                        clearInterval(checkDead); // Stop checking for collision
+                        game.removeChild(obstacle); // Remove the obstacle from the game
+                    }
+                }, 10);
             }
 
-            setInterval(createObstacle, 3000); // Create a new obstacle every 3 seconds
+            setInterval(createObstacle, 4000); // Create a new obstacle every 4 seconds
         </script>
     </body>
 </html>

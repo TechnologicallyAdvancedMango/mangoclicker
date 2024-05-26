@@ -12,14 +12,15 @@
                 position: absolute;
                 bottom: 0;
                 left: 50px;
-                background-color: #000000;
+                background-image: url('URL_OF_YOUR_IMAGE');
+                background-size: cover;
                 width: 20px;
                 height: 20px;
             }
             .obstacle {
                 right: -20px;
                 animation: obstacle 10s linear;
-                 position: absolute;
+                position: absolute;
                 bottom: 0;
                 background-color: #ff0000;
                 width: 30px;
@@ -82,45 +83,34 @@
                 obstacle.style.height = randomHeight + 'px';
                 obstacle.style.animationDuration = '2s'; // Fixed speed
 
-              var checkDead = setInterval(function () {
-    var playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
-    var playerTop = playerBottom + parseInt(window.getComputedStyle(player).getPropertyValue('height'));
-    var playerRight = parseInt(window.getComputedStyle(player).getPropertyValue('left')) + parseInt(window.getComputedStyle(player).getPropertyValue('width'));
-    var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
-    var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
-    var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
+                var checkDead = setInterval(function () {
+                    var playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
+                    var playerTop = playerBottom + parseInt(window.getComputedStyle(player).getPropertyValue('height'));
+                    var playerRight = parseInt(window.getComputedStyle(player).getPropertyValue('left')) + parseInt(window.getComputedStyle(player).getPropertyValue('width'));
+                    var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+                    var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
+                    var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
-    var onObstacle = playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop && playerTop > obstacleTop;
+                    var onObstacle = playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop && playerTop > obstacleTop;
 
-    if (onObstacle) {
-        // Player is on top of the obstacle
-        player.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
-    } else if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop) {
-        // Player hits the side of the obstacle
-        obstacle.style.animation = 'none';
-        obstacle.style.display = 'none';
-        alert('Game Over. You lost.');
-        location.reload(); // Reload the page to restart the game
-    } else if (playerBottom > 0 && player.classList != 'animate' && !onObstacle) { // If the player is not on top of an obstacle and is not jumping
-        player.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down
-    }
+                    if (onObstacle) {
+                        // Player is on top of the obstacle
+                        player.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
+                    } else if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop) {
+                        // Player hits the side of the obstacle
+                        obstacle.style.animation = 'none';
+                        obstacle.style.display = 'none';
+                        alert('Game Over. You lost.');
+                        location.reload(); // Reload the page to restart the game
+                    } else if (playerBottom > 0 && player.classList != 'animate' && !onObstacle) { // If the player is not on top of an obstacle and is not jumping
+                        player.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down
+                    }
 
-    if (obstacleRight < 0) { // If the obstacle has passed the player
-        clearInterval(checkDead); // Stop checking for collision
-        game.removeChild(obstacle); // Remove the obstacle from the game
-    }
-}, 10);
-
-
-
-
-
-
-
-
-
-
-
+                    if (obstacleRight < 0) { // If the obstacle has passed the player
+                        clearInterval(checkDead); // Stop checking for collision
+                        game.removeChild(obstacle); // Remove the obstacle from the game
+                    }
+                }, 10);
             }
 
             setInterval(createObstacle, 1000); // Create a new obstacle every second

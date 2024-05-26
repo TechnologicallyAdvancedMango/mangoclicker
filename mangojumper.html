@@ -8,15 +8,20 @@
                 width: 100%;
                 background-color: #f0f0f0;
             }
-            #player {
+            #playerContainer {
                 position: absolute;
                 bottom: 0;
                 left: 50px;
-                background-image: url('https://themango.click/images/mango.png');
-                background-size: cover;
                 width: 20px;
                 height: 20px;
+            }
+            #player {
+                width: 100%;
+                height: 100%;
+                background-image: url('https://themango.click/images/mango.png');
+                background-size: cover;
                 border: 3px solid black;
+                animation: spin 0.5s linear infinite;
             }
             .obstacle {
                 right: -20px;
@@ -28,10 +33,7 @@
                 height: 20px;
             }
             .animate {
-                animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-            }
-            .spin {
-                animation: spin 2s linear infinite;
+                animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1);
             }
             @keyframes jump {
                 0% { bottom: 0; }
@@ -50,12 +52,14 @@
     </head>
     <body onmousedown="jump()">
         <div id="game">
-            <div id="player"></div>
+            <div id="playerContainer" class="animate">
+                <div id="player"></div>
+            </div>
         </div>
         <div id="score">Score: 0</div>
 
         <script>
-            var player = document.getElementById('player');
+            var playerContainer = document.getElementById('playerContainer');
             var game = document.getElementById('game');
             var scoreElement = document.getElementById('score');
             var score = 0;
@@ -63,12 +67,11 @@
             var scoreInterval;
 
             function jump() {
-                if (!player.classList.contains('animate')) {
-                    player.classList.add('animate');
-                    player.classList.add('spin');
+                if (!playerContainer.classList.contains('animate')) {
+                    playerContainer.classList.add('animate');
                 }
                 setTimeout(function () {
-                    player.classList.remove('animate');
+                    playerContainer.classList.remove('animate');
                 }, 500);
 
                 if (firstClick) {
@@ -89,9 +92,9 @@
                 obstacle.style.animationDuration = '2s'; // Fixed speed
 
                 var checkDead = setInterval(function () {
-                    var playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
-                    var playerTop = playerBottom + parseInt(window.getComputedStyle(player).getPropertyValue('height'));
-                    var playerRight = parseInt(window.getComputedStyle(player).getPropertyValue('left')) + parseInt(window.getComputedStyle(player).getPropertyValue('width'));
+                    var playerBottom = parseInt(window.getComputedStyle(playerContainer).getPropertyValue('bottom'));
+                    var playerTop = playerBottom + parseInt(window.getComputedStyle(playerContainer).getPropertyValue('height'));
+                    var playerRight = parseInt(window.getComputedStyle(playerContainer).getPropertyValue('left')) + parseInt(window.getComputedStyle(playerContainer).getPropertyValue('width'));
                     var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
                     var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
                     var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
@@ -100,15 +103,15 @@
 
                     if (onObstacle) {
                         // Player is on top of the obstacle
-                        player.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
+                        playerContainer.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
                     } else if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop) {
                         // Player hits the side of the obstacle
                         obstacle.style.animation = 'none';
                         obstacle.style.display = 'none';
                         alert('Game Over. You lost.');
                         location.reload(); // Reload the page to restart the game
-                    } else if (playerBottom > 0 && player.classList != 'animate' && !onObstacle) { // If the player is not on top of an obstacle and is not jumping
-                        player.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down
+                    } else if (playerBottom > 0 && playerContainer.classList != 'animate' && !onObstacle) { // If the player is not on top of an obstacle and is not jumping
+                        playerContainer.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down
                     }
 
                     if (obstacleRight < 0) { // If the obstacle has passed the player

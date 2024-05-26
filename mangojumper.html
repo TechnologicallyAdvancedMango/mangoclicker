@@ -18,7 +18,7 @@
             }
             .obstacle {
                 right: -20px;
-                animation: obstacle 4s linear;
+                animation: obstacle 10s linear;
                  position: absolute;
                 bottom: 0;
                 background-color: #ff0000;
@@ -90,7 +90,9 @@
     var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
     var obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
-    if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop && playerTop > obstacleTop) {
+    var onObstacle = playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop && playerTop > obstacleTop;
+
+    if (onObstacle) {
         // Player is on top of the obstacle
         player.style.bottom = obstacleTop + 'px'; // Set the player's bottom to the top of the obstacle
     } else if (playerRight > obstacleLeft && playerRight < obstacleRight && playerBottom < obstacleTop) {
@@ -99,7 +101,7 @@
         obstacle.style.display = 'none';
         alert('Game Over. You lost.');
         location.reload(); // Reload the page to restart the game
-    } else if (playerBottom > 0 && player.classList != 'animate') { // If the player is not on top of an obstacle and is not jumping
+    } else if (playerBottom > 0 && player.classList != 'animate' && !onObstacle) { // If the player is not on top of an obstacle and is not jumping
         player.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down
     }
 
@@ -108,6 +110,8 @@
         game.removeChild(obstacle); // Remove the obstacle from the game
     }
 }, 10);
+
+
 
 
 

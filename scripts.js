@@ -108,7 +108,6 @@ function updateGame() {
   updateAchievementsDisplay();
   multiplierCost = Math.floor(multiplierCost);
   clicks = Math.floor(clicks);
-  doAlerts = alertsCheckboxBYID.checked;
  if(autoClickerHasBeenBought === true) {
   shopAutoclicker.textContent = "Autoclicker Purchased";
             shopAutoclicker.className = "acp1";

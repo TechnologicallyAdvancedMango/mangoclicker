@@ -20,7 +20,7 @@
                 animation: obstacle 2s infinite linear;
             }
             .animate {
-                animation: jump 0.5s;
+                animation: jump 0.5s ease;
             }
             @keyframes jump {
                 0% { top: 150px; }
@@ -36,12 +36,11 @@
     <body onclick="jump()">
         <div id="game">
             <div id="player"></div>
-            <div class="obstacle"></div>
         </div>
 
         <script>
             var player = document.getElementById('player');
-            var obstacle = document.getElementsByClassName('obstacle')[0];
+            var game = document.getElementById('game');
 
             function jump() {
                 if (player.classList != 'animate') {
@@ -60,8 +59,20 @@
                     obstacle.style.animation = 'none';
                     obstacle.style.display = 'none';
                     alert('Game Over. You lost.');
+                    location.reload(); // Reload the page to restart the game
                 }
             }, 10);
+
+            function createObstacle() {
+                var obstacle = document.createElement('div');
+                obstacle.classList.add('obstacle');
+                game.appendChild(obstacle);
+                var randomHeight = Math.random() * 60 + 10; // Random height between 10 and 70
+                obstacle.style.height = randomHeight + 'px';
+                obstacle.style.animationDuration = Math.random() * 1 + 1 + 's'; // Random speed between 1 and 2 seconds
+            }
+
+            setInterval(createObstacle, 2000); // Create a new obstacle every 2 seconds
         </script>
     </body>
 </html>

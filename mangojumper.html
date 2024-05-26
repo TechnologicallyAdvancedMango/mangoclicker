@@ -4,33 +4,37 @@
         <style>
             #game {
                 position: relative;
-                height: 500px;
+                height: 200px;
                 width: 100%;
                 background-color: #f0f0f0;
             }
             #player {
                 position: absolute;
                 bottom: 0;
-                background-color: #00ff00;
+                background-color: #000000;
                 width: 20px;
                 height: 20px;
             }
             .obstacle {
                 right: -20px;
                 animation: obstacle 2s linear;
-                position: absolute;
+                 position: absolute;
                 bottom: 0;
                 background-color: #ff0000;
                 width: 20px;
                 height: 20px;
             }
             .animate {
-                animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+                animation: jump 0.5s cubic-bezier(0.42, 0, 0.58, 1), rotate 0.5s linear;
             }
             @keyframes jump {
                 0% { bottom: 0; }
                 50% { bottom: 70px; }
                 100% { bottom: 0; }
+            }
+            @keyframes rotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
             @keyframes obstacle {
                 0% { right: -20px; }
@@ -80,23 +84,23 @@
                 var checkDead = setInterval(function () {
                     var playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
                     var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
-                    var obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
+                    var obstacleRight = obstacleLeft + parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
 
-                    if (obstacleLeft < 20 && obstacleLeft > 0 && playerBottom <= (obstacleHeight - 20)) {
+                    if (obstacleLeft < 20 && obstacleRight > 0 && playerBottom <= randomHeight) {
                         obstacle.style.animation = 'none';
                         obstacle.style.display = 'none';
                         alert('Game Over. You lost.');
                         location.reload(); // Reload the page to restart the game
                     }
 
-                    if (obstacleLeft < -20) { // If the obstacle has passed the player
+                    if (obstacleRight < 0) { // If the obstacle has passed the player
                         clearInterval(checkDead); // Stop checking for collision
                         game.removeChild(obstacle); // Remove the obstacle from the game
                     }
                 }, 10);
             }
 
-            setInterval(createObstacle, 1000); // Create a new obstacle every second
+            setInterval(createObstacle, 4000); // Create a new obstacle every 4 seconds
         </script>
     </body>
 </html>

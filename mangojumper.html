@@ -21,6 +21,7 @@
                 background-image: url('https://themango.click/images/mango.png');
                 background-size: cover;
                 border: 3px solid black;
+                transition: transform 0.5s; /* Add this line */
             }
             .obstacle {
                 right: -20px;
@@ -66,7 +67,7 @@
             function jump() {
                 if (!playerContainer.classList.contains('animate')) {
                     playerContainer.classList.add('animate');
-                    rotation += 90; // Increase the rotation angle by 90 degrees
+                    rotation += 180; // Increase the rotation angle by 180 degrees
                     player.style.transform = 'rotate(' + rotation + 'deg)'; // Apply the new rotation angle to the player
                 }
                 setTimeout(function () {

@@ -54,8 +54,9 @@
             var checkDead = setInterval(function () {
                 var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
                 var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+                var obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
-                if (obstacleLeft < 20 && obstacleLeft > 0 && playerTop >= 130) {
+                if (obstacleLeft < 20 && obstacleLeft > 0 && playerTop >= (150 - obstacleHeight)) {
                     obstacle.style.animation = 'none';
                     obstacle.style.display = 'none';
                     alert('Game Over. You lost.');
@@ -72,7 +73,7 @@
                 obstacle.style.animationDuration = Math.random() * 1 + 1 + 's'; // Random speed between 1 and 2 seconds
             }
 
-            setInterval(createObstacle, 2000); // Create a new obstacle every 2 seconds
+            setInterval(createObstacle, 3000); // Create a new obstacle every 3 seconds
         </script>
     </body>
 </html>

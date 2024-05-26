@@ -64,7 +64,7 @@
                     var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
                     var obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
-                    if (obstacleLeft < 20 && obstacleLeft > 0 && playerBottom <= obstacleHeight) {
+                    if (obstacleLeft < 20 && obstacleLeft > 0 && playerBottom <= (obstacleHeight - 20)) {
                         obstacle.style.animation = 'none';
                         obstacle.style.display = 'none';
                         alert('Game Over. You lost.');

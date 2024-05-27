@@ -56,13 +56,13 @@
                 <div id="player"></div>
             </div>
         </div>
-        <p id="score">Score: 0</p>
+        <p id="scorep">Score: 0</p>
 
         <script>
             var playerContainer = document.getElementById('playerContainer');
             var player = document.getElementById('player');
             var game = document.getElementById('game');
-            var scoreElement = document.getElementById('score');
+            var scoreElement = document.getElementById('scorep');
             var score = 0;
             var firstClick = true;
             var scoreInterval;
@@ -112,7 +112,7 @@
                         // Player hits the side of the obstacle
                         obstacle.style.animation = 'none';
                         obstacle.style.display = 'none';
-                        alert('Game Over. You lost.');
+                        alert('Game Over. You lost. Score:' + score);
                         location.reload(); // Reload the page to restart the game
                     } else if (playerBottom > 0 && playerContainer.classList != 'animate' && !onObstacle) { // If the player is not on top of an obstacle and is not jumping
                         playerContainer.style.bottom = (playerBottom - 1) + 'px'; // Apply "gravity" to bring the player down

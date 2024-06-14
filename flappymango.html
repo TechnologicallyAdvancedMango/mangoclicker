@@ -1,9 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Flappy Mango</title>
-  </head>
-  <body>
-    
-  </body>
+<body>
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dy = -2;
+var gravity = 0.05;
+var onGround = false;
+var obstacles = [];
+var obstacleWidth = 20;
+var obstacleGap = 200;
+var obstacleHeight;
+
+function drawBird() {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawObstacle(x) {
+    obstacleHeight = Math.random() * (canvas.height - obstacleGap);
+    ctx.beginPath();
+    ctx.rect(x, 0, obstacleWidth, obstacleHeight);
+    ctx.rect(x, obstacleHeight + obstacleGap, obstacleWidth, canvas.height - obstacleHeight - obstacleGap);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBird();
+
+    if (Math.random() < 0.01) {
+        obstacles.push(canvas.width);
+    }
+
+    for (var i = 0; i < obstacles.length; i++) {
+        drawObstacle(obstacles[i]);
+        obstacles[i]--;
+
+        if (obstacles[i] < x + 10 && obstacles[i] > x - 10) {
+            if (y < obstacleHeight || y > obstacleHeight + obstacleGap) {
+                onGround = true;
+            }
+        }
+    }
+
+    y += dy;
+    dy += gravity;
+
+    if(y + dy > canvas.height-10 || y + dy < 10) {
+        dy = -dy*0.5;
+        if(Math.abs(dy) < 1){
+            dy = 0;
+            onGround = true;
+        }
+    }
+    if(!onGround){
+        requestAnimationFrame(draw);
+    }
+}
+
+document.addEventListener("mousedown", function(){
+    if(onGround){
+        return;
+    }
+    dy = -2;
+});
+
+draw();
+</script>
+
+</body>
 </html>

@@ -1,7 +1,8 @@
 #ad {
-            position: fixed;
-            bottom: 0;
-            right: 0;
+position: fixed;
+bottom: 0;
+right: 0;
+margin: 10px;
 }
 .collapsible {
   display: none;
